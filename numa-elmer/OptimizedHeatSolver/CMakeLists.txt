@@ -1,5 +1,0 @@
-ADD_DEFINITIONS(-Wall -fmax-errors=0)
-FILE(GLOB f90s *.f90)
-LIST(REMOVE_ITEM f90s HeatSolve.f90)
-ADD_LIBRARY(numa-eheatsolver SHARED HeatSolve.f90 ${f90s})
-INSTALL(TARGETS numa-eheatsolver LIBRARY DESTINATION "share/elmersolver/lib")

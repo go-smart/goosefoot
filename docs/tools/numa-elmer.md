@@ -9,4 +9,4 @@ support the ablation context.
 
 The modifications to the upstream version of Elmer are branched from the
 [Github](https://github.com/ElmerCSC/elmerfem) source tree to simplify
-contribution.
+contribution. This is pending clarification of copyright assignment policy.

@@ -83,7 +83,6 @@ SET(CMAKE_Fortran_MODULE_DESTINATION
 
 ADD_SUBDIRECTORY(lesion)
 ADD_SUBDIRECTORY(gssf)
-ADD_SUBDIRECTORY(numa-elmer)
 
 MESSAGE(STATUS "------------------------------------------------")
 MESSAGE(STATUS "  BLAS library:   " ${BLAS_LIBRARIES})

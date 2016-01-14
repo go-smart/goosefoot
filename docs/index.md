@@ -43,7 +43,7 @@ settings, which you may (or may not) want to update in the
 [CDM](https://go-smart.github.io/gssa/cdm/overview/) later,
 but, in general, provides a simple workflow for taking STL surfaces, producing a
 volumetric mesh, running an Elmer simulation and returning a clean STL
-isosurface. Moreover, it is scriptable and using fairly flexible command-line
+isosurface. Moreover, it is scriptable using fairly flexible command-line
 arguments, and terminal output is nicely colour-coded.
 
 Execution of the workflow is managed by [go-smart-launcher](go-smart-launcher.md).

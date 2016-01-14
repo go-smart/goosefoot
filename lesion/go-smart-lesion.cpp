@@ -62,10 +62,6 @@
   #include "vtkIsoVolume/vtkIsoVolume.h"
 #endif
 
-/* REQUIRES PARAVIEW HEADERS
-#include "vtkIsoVolume.h"
-*/
-
 #include <tinyxml2.h>
 
 namespace po = boost::program_options;
@@ -76,6 +72,7 @@ int main(int argc, char *argv[])
   bool connected_component = false, subdivide = false, parallel = false, using_upper = false, using_lower = false,
        threshold_not_isovolume = false, geometry_filter = false, retain_subdomain_boundaries = false;
   int smoothing_iterations = 0, exclude_subdomain = -1;
+
   std::string input_vtu("in.vtu"), output_vtk("out.vtk"), field("dead"), analysis_xml("analysis.xml");
 
   tinyxml2::XMLDocument doc;
