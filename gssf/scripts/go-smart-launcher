@@ -42,7 +42,7 @@ def main():
 
     # Create the application object and initialize it with what we know
     try:
-        wrapper = gssf.GSSF(args=args, global_working_directory=args.global_working_directory, update_status=args.update_status)
+        wrapper = gssf.GoSmartSimulationFramework(args=args, global_working_directory=args.global_working_directory, update_status=args.update_status)
     except Exception as e:
         # Return an error that fits with the GoSmartError classes
         if isinstance(e, errors.GoSmartError):
