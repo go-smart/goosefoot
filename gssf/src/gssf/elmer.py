@@ -632,7 +632,6 @@ class GoSmartElmer(GoSmartComponent):
         if nprocs < 2:
             self.logger.print_line(" [in serial]")
             if not self.logger.leavetree:
-                self._generate_power_over_time()
                 if self.probe_location_factory:
                     self._generate_probe_locations()
 
@@ -652,7 +651,6 @@ class GoSmartElmer(GoSmartComponent):
                 return_code = self._launch_subprocess(self.elmer_binary, [])
         else:
 
-            self._generate_power_over_time()
             if self.probe_location_factory:
                 self._generate_probe_locations()
 
