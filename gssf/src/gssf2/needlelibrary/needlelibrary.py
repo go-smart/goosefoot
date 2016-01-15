@@ -23,13 +23,12 @@ import os
 import sys
 import argparse
 
-from config import template_directory
 from . import manipulator
 from . import spherebuilder
 from . import cuboidbuilder
 
 from lxml import etree as ET
-from distutils.version import LooseVersion, StrictVersion
+from distutils.version import StrictVersion
 
 
 # Simple logger class to be superseded by the Py3 logger when PythonOCC

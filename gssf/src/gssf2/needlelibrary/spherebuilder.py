@@ -16,13 +16,11 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from config import *
+from .config import *
 from OCC.TopoDS import TopoDS_Shape
 import os
 
-from .config import template_directory
-from .needlelibrary import extentbuilder
-from OCC.TopoDS import TopoDS_Shape
+from . import extentbuilder
 
 
 # Create an OCC sphere of given radius

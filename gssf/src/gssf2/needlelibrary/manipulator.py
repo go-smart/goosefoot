@@ -35,11 +35,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from OCC.StlAPI import StlAPI_Writer as Stl
-from OCC.gp import gp_Trsf
-from OCC.TopExp import TopExp_Explorer
-from OCC.TopAbs import TopAbs_SOLID, TopAbs_SHELL
 
-from config import *
 from OCC import gp
 from OCC.BRepBuilderAPI import BRepBuilderAPI_Transform as BRepTransform
 
@@ -47,7 +43,7 @@ import os
 import numpy as N
 from slugify import slugify
 
-from .config import template_directory
+from .config import *
 
 REFERENCE_SCALING = 0.001
 
@@ -82,6 +78,11 @@ class Manipulator:
                 step_importer = STEPControl_Reader()
         else:
                 step_importer = STEP.STEPControl_Reader()
+
+        # Required as the STEP importer otherwise segfaults (not kidding)
+        if not os.path.exists(filename):
+            raise IOError("STEP file missing: %s" % filename)
+
         step_importer.ReadFile(str(filename))
 
         # How many possible shapes?

@@ -20,7 +20,7 @@ from OCC.BRepPrimAPI import BRepPrimAPI_MakeBox
 from OCC import gp
 from OCC.BRepBuilderAPI import BRepBuilderAPI_Transform as BRepTransform
 
-from .needlelibrary import extentbuilder
+from . import extentbuilder
 
 
 # Create an OCC box of given length, width and height
