@@ -33,4 +33,4 @@ except:
         from OCC.Utils.DataExchange import STEP as STEP
     OCCVersion="0.12"
 
-template_directory = os.path.join(os.path.dirname(__file__), 'data')
+template_directory = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data')
