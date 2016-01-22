@@ -46,6 +46,7 @@ setup(name='Go-Smart Simulation',
       version='${PACKAGE_VERSION}',
       packages=['gssf', 'gssf', 'gosmart_sf_config'],
       package_dir={'gssf': '${CMAKE_CURRENT_SOURCE_DIR}/src/gssf', 'gosmart_sf_config': config_directory},
+
       package_data={'gssf': [
           'data/go-smart-probe-location-template.txt',
           'data/go-smart-power-over-time.txt',
@@ -84,6 +85,8 @@ setup(name='Go-Smart Simulation',
           'data/elmer_modules/mwa_ElecCond.f90',
           'data/elmer_modules/mwa_PowerOverTime.f90',
       ] + sars},
+
+      install_requires=['numpy'],
 
       description='Wrapper for Go-Smart simulation environment',
       author='NUMA Engineering Services Ltd.',
