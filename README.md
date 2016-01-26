@@ -1,5 +1,8 @@
-Go-Smart Simulation Framework (GSSF)
-====================================
+Goosefoot (aka. GSSF)
+=====================
+
+A Tool-Specific Simulation Framework for Go-Smart
+-------------------------------------------------
 
 **Primary authors** : [NUMA Engineering Services Ltd](http://www.numa.ie) (NUMA), Dundalk, Ireland
 
@@ -7,7 +10,7 @@ Go-Smart Simulation Framework (GSSF)
 
 This project is co-funded by: European Commission under grant agreement no. 600641.
 
-This tool, GSSF, provides the necessary scripts and libraries to run a simulation workflow beginning from STL and VTP surfaces, configuring a [CGAL](https://cgal.org)-based tool for volumetric meshing, running [Elmer](https://elmerfem.org) for finite element simulation, and ending with a [VTK](https://vtk.org)-extracted isosurface.
+This tool, Goosefoot (GSSF), provides the necessary scripts and libraries to run a simulation workflow beginning from STL and VTP surfaces, configuring a [CGAL](https://cgal.org)-based tool for volumetric meshing, running [Elmer](https://elmerfem.org) for finite element simulation, and ending with a [VTK](https://vtk.org)-extracted isosurface.
 
 Dependencies
 ------------
