@@ -86,7 +86,7 @@ setup(name='Go-Smart Simulation',
           'data/elmer_modules/mwa_PowerOverTime.f90',
       ] + sars},
 
-      install_requires=['numpy'],
+      install_requires=['numpy', 'jinja2'],
 
       description='Wrapper for Go-Smart simulation environment',
       author='NUMA Engineering Services Ltd.',

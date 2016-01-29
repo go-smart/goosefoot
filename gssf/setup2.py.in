@@ -17,6 +17,7 @@ setup(name='Go-Smart Simulation (Python2 components)',
       packages=['gssf2', 'gssf2.needlelibrary', 'gssf2.preprocessor'],
       package_dir={'gssf2': '${CMAKE_CURRENT_SOURCE_DIR}/src/gssf2'},
       package_data={'gssf2': needle_library},
+      install_requires=['numpy', 'slugify', 'lxml'],
 
       description='Wrapper for Go-Smart simulation environment (Python 2 components)',
       author='Phil Weir - NUMA Engineering Services Ltd.',
