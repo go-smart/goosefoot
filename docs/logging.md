@@ -23,10 +23,7 @@ in the [vigilant](https://github.com/redbrain/vigilant) documentation.
 
 **TODO**: Update configuration format to JSON, following upstream change.
 
-**FIXME**: Posting vigilant messages on `log_line` is currently suspended,
-as the filling pipe was slowing the rest of the master process. While this needs to be
-farmed out to a thread properly, for the moment test this functionality by
-uncommenting the marked line in logger_vigilant.py.
+**FIXME**: Posting vigilant messages on `log_line` is currently suspended, as the filling pipe was slowing the rest of the master process. While this needs to be farmed out to a thread properly, for the moment test this functionality by uncommenting the marked line in logger_vigilant.py.
 
 ### Logpick
 

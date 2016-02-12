@@ -1,7 +1,7 @@
 # Constants in GSSF
 
 In GSSF code, parameters are generally referred to as ``constants``, which is not
-entirely accurate (TODO), but reflects the fact that the definition itself does
+entirely accurate, but reflects the fact that the definition itself does
 not usually change throughout the simulation. They are generally
 floats/ints/etc. but may be MATC functions that are dropped into the SIF at the
 start of the simulation.

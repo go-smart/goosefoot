@@ -66,7 +66,7 @@ here, is `0.1.0`. Note European spelling of `centre`.
 
 ## XML Schema
 
-This is a **TODO**. For the moment, the documentation here should be adequate
+The documentation here should be adequate
 to perform basic creation and manipulation of GSSF-XML.
 However, in keeping with the increasing importance of
 Docker-workflow and the presence of an automatic GSSA-XML &rarr; GSSF-XML

@@ -33,10 +33,15 @@ etc_location = gosmart_sf_config.etc_location
 
 # Elmer properties (as GSSF => Elmer workflow)
 elmer_binary_location = shutil.which("ElmerSolver_mpi")
-elmer_prefix = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(elmer_binary_location)), os.pardir))
-elmer_home = os.path.join(elmer_prefix, "share", "elmersolver")
+if elmer_binary_location:
+    elmer_prefix = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(elmer_binary_location)), os.pardir))
+    elmer_home = os.path.join(elmer_prefix, "share", "elmersolver")
 
-# Find the Elmer revision with which we are working - this is important for the
-# log files, as it makes post hoc bisection possible
-with open(os.path.join(elmer_home, "gitrev")) as f:
-        elmer_git_revision = f.read()
+    # Find the Elmer revision with which we are working - this is important for the
+    # log files, as it makes post hoc bisection possible
+    with open(os.path.join(elmer_home, "gitrev")) as f:
+            elmer_git_revision = f.read()
+else:
+    elmer_prefix = None
+    elmer_home = None
+    elmer_git_revision = None

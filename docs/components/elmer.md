@@ -69,8 +69,7 @@ the solver `Percentage Progress` value. By adding this solver into your SIF file
 and setting `Percentage Progress` within it, you can receive percentage updates in the main
 Python process.
 
-TODO: Add in user-configurable status text, after checking for security
-issues that may rise.
+TODO: Add in user-configurable status text, after checking for security issues that may rise.
 
 ## Runtime compilation
 

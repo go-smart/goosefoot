@@ -56,7 +56,7 @@ optimizer](components/optimizer.md), [ElmerGrid](components/elmergrid.md), the [
 [lesion extraction](components/lesion.md) on the results. It may also, if configured, run
 [validation](components/validation.md).
 
-![GSSF Workflow](images/workflow.svg)
+![GSSF Workflow](images/workflow.png)
 
 ## Directory layout
 

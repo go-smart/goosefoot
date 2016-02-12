@@ -42,8 +42,7 @@ this parameter). The `INNERREGION` allows you to specify a [region](../regions.m
 that should form an outer boundary for the inner mesh - this is currently implemented
 only in the case of volumetric meshes, but strictly it could be extended to both.
 
-**TODO**: Allow user-supplied inner templates. Account for multiple needles when
-using inner meshes.
+**TODO**: Allow user-supplied inner templates. Account for multiple needles when using inner meshes.
 
 ## 3D-CGAL
 
@@ -119,8 +118,7 @@ the template,
 [string.Template](https://docs.python.org/3/library/string.html#template-strings)
 is used.
 
-**TODO**: Confirm this has no axisymmetric-specific behaviour and rename it to
-GMSH. Add support for supplied (non-library) templates.
+**TODO**: Confirm this has no axisymmetric-specific behaviour and rename it to GMSH. Add support for supplied (non-library) templates.
 
 ## Renumbering
 
@@ -133,6 +131,4 @@ which subdomains appear in the simulation mesh. After this,
 this step, not itself a full component, is in `meshes-reordered/`. Other than
 numbering, these meshes should match those output by the optimizer in `optimizer/`.
 
-**TODO**: to renumber in two steps, the mesh indices are temporarily replaced with
-characters using an ASCII mapping. This creates an artifical restriction to 26
-subdomains, which could be avoided by a more elegant solution.
+**TODO**: to renumber in two steps, the mesh indices are temporarily replaced with characters using an ASCII mapping. This creates an artifical restriction to 26 subdomains, which could be avoided by a more elegant solution.

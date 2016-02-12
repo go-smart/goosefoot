@@ -59,7 +59,3 @@ Argument                                      | Description
     `-o [ --output ] arg`                     | output file
     `-r [ --retain-subdomain-boundaries ]`    | retain all internal inter-zone boundary facets
     `-g [ --geometry-filter ]`                | use geometry filter instead of vtkDataSetSurfaceFilter to extract surface
-
-## Implementation
-
-TODO-RMV: after refactoring

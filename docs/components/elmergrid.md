@@ -26,4 +26,4 @@ not provided, it will be used to set ElmerGrid scaling.
 
 * As the total simulation scaling is based on the scaling from the [Needle
 Library](needle-library.md) and ElmerGrid components, they should appear in that
-order in the XML, for the moment. In general, order should be irrelevant (FIXME)
+order in the XML.
