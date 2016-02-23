@@ -260,10 +260,13 @@ class GoSmartSimulationFramework:
             self.update_status(overall_percentage, "Validation starting")
             overall_percentage = overall_percentage + percentage_per_component
             validation_surface, validation_analysis = self.validation.launch(is_parallel=(self.child_procs is not None and self.child_procs > 1))
-            self.update_status(overall_percentage, "Validation complete")
-            final_output["validation_surface.vtp"] = validation_surface
-            final_output["validation_analysis.xml"] = validation_analysis
-            shutil.copyfile(validation_analysis, os.path.join(self.logger.get_cwd(), "validation.xml"))
+            if validation_surface is not None and validation_analysis is not None:
+                self.update_status(overall_percentage, "Validation complete")
+                final_output["validation_surface.vtp"] = validation_surface
+                final_output["validation_analysis.xml"] = validation_analysis
+                shutil.copyfile(validation_analysis, os.path.join(self.logger.get_cwd(), "validation.xml"))
+            else:
+                self.update_status(overall_percentage, "Could not perform validation (is AaltoTCV binary definitely present?)")
 
         # If we have output to amalgamate into a single handy location, copy it
         # there

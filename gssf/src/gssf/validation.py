@@ -85,6 +85,9 @@ class GoSmartValidation(GoSmartComponent):
             1 if self.registration else 0
         ]
 
-        self._launch_subprocess(self.binary_name, args)
+        try:
+            self._launch_subprocess(self.binary_name, args)
+        except FileNotFoundError:
+            return None, None
 
         return os.path.join(self.cwd, output_name), os.path.join(self.cwd, analysis_name)
