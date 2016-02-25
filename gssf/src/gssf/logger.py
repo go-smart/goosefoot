@@ -309,8 +309,12 @@ class GoSmartLogger(GoSmartComponent):
 
     # Get a parameter for a specific needle
     def get_needle_constant(self, needle, name):
-        if needle in self._constant_needle_mapping \
-           and name in self._constant_needle_mapping[needle]:
+        if needle not in self._constant_needle_mapping:
+            self.print_fatal(
+                "Needle {needle} missing - asked for parameter {name} (NB: needles start from 0)".format(needle=needle, name=name),
+                "E_MODEL"
+            )
+        if name in self._constant_needle_mapping[needle]:
             return self._constant_needle_mapping[needle][name]
 
         return None
