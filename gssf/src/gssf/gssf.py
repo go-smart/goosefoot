@@ -251,9 +251,10 @@ class GoSmartSimulationFramework:
         if "lesion" in self.components:
             self.update_status(overall_percentage, "Lesion starting")
             overall_percentage = overall_percentage + percentage_per_component
-            lesion_surface = self.lesion.launch(is_parallel=(self.child_procs is not None and self.child_procs > 1))
+            lesion_surface, lesion_volume = self.lesion.launch(is_parallel=(self.child_procs is not None and self.child_procs > 1))
             self.update_status(overall_percentage, "Lesion complete")
             final_output["lesion_surface.vtp"] = lesion_surface
+            final_output["lesion_volume.vtu"] = lesion_volume
 
         # ... and validate
         if "validation" in self.components:

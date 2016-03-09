@@ -191,4 +191,4 @@ class GoSmartLesion(GoSmartComponent):
 
         # Return the output file that should be held for the user on the grand
         # exit
-        return os.path.join(self.cwd, output_name)
+        return os.path.join(self.cwd, output_name), os.path.join(self.cwd, input_name)
