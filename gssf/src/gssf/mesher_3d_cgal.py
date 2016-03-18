@@ -304,8 +304,7 @@ class GoSmartMesher3DCGAL(GoSmartMesher):
             "--farfield", str(self.farfield),
             "--zonefield", str(self.zonefield),
             "--granularity", str(self.granularity),
-            "--zone_radius", str(self.zone_radius),
-            "--output_gmsh"
+            "--zone_radius", str(self.zone_radius)
         ]
 
         if "centre" in self.mesh:
@@ -334,10 +333,10 @@ class GoSmartMesher3DCGAL(GoSmartMesher):
             args.append("--boundary_tree")
 
         if not self.needles_are_nearfield:
-            args.append("--omit_needles_tree")
+            args.append("--omit_needle_tree")
 
         if not self.zones_are_zonefield:
-            args.append("--omit_zones_tree")
+            args.append("--omit_zone_tree")
 
         if self.solid_zonefield:
             args.append("--solid_zone")
