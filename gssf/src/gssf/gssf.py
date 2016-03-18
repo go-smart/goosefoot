@@ -163,7 +163,11 @@ class GoSmartSimulationFramework:
 
         # Start counting percentage progress
         overall_percentage = 0.0
-        percentage_per_component = 100 / len(self.components)
+        if "elmer" in self.components:
+            percentage_per_component = 100 / (len(self.components) + 4)
+        else:
+            percentage_per_component = 100 / (len(self.components))
+        # We add 4 to give ElmerSolver the weight of 5 components - arbitrary, but beats equal distribution.
 
         # By default, we use a analytically-defined extent
         extent_file = None
@@ -242,8 +246,8 @@ class GoSmartSimulationFramework:
         # We run ElmerSolver
         if "elmer" in self.components:
             self.update_status(overall_percentage, "Elmer starting")
-            self.elmer.set_update_status(lambda p, m: self.update_status(p / percentage_per_component + overall_percentage, m))
-            overall_percentage = overall_percentage + percentage_per_component
+            self.elmer.set_update_status(lambda p, m: self.update_status(5 * p / percentage_per_component + overall_percentage, m))
+            overall_percentage = overall_percentage + 5 * percentage_per_component
             self.launch_elmer(mesh_locations=eg_trees)
             self.update_status(overall_percentage, "Elmer complete")
 
