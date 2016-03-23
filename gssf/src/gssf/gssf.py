@@ -247,8 +247,8 @@ class GoSmartSimulationFramework:
         if "elmer" in self.components:
             self.update_status(overall_percentage, "Elmer starting")
             self.elmer.set_update_status(lambda p, m: self.update_status(5 * p / percentage_per_component + overall_percentage, m))
-            overall_percentage = overall_percentage + 5 * percentage_per_component
             self.launch_elmer(mesh_locations=eg_trees)
+            overall_percentage = overall_percentage + 5 * percentage_per_component
             self.update_status(overall_percentage, "Elmer complete")
 
         # ... extract the lesion ...
