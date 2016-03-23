@@ -665,6 +665,7 @@ class GoSmartElmer(GoSmartComponent):
             self.logger.print_line(" [using MPI with %d processes]" % nprocs)
             args = ["-np", str(nprocs),
                     launcher_command,
+                    "--nprocs", "1",
                     "--silent",
                     "--only", "elmer",
                     "--leavetree",

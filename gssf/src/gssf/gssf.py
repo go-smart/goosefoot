@@ -149,7 +149,8 @@ class GoSmartSimulationFramework:
     # Start off the GSSF workflow
     def launch(self, default_procs=1):
         if self.child_procs is None:
-            self.child_procs = default_procs
+            param_procs = logger.get_constant('mpi processes', group='setting')
+            self.child_procs = param_procs if param_procs else default_procs
 
         final_output = {}
 
