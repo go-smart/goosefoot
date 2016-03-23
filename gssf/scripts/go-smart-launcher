@@ -54,7 +54,7 @@ def main():
             f.write("%s\nINIT-ERROR (%s): %s" % (code, type(e).__name__, str(e)))
 
         traceback.print_exc()
-        return -1
+        return int(errors.Error[code].value)
 
     # Let the user know we have arrived
     wrapper.print_header()
@@ -73,7 +73,7 @@ def main():
             f.write("%s\nEXEC-ERROR (%s): %s" % (code, type(e).__name__, str(e)))
 
         traceback.print_exc()
-        return -1
+        return int(errors.Error[code].value)
 
     return 0
 

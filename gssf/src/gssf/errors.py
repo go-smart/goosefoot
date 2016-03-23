@@ -5,7 +5,7 @@ from enum import Enum
 # applicable of these should be returned. They indicate where the fault is
 # likely to lie.
 class Error(Enum):
-    SUCCESS, E_UNKNOWN, E_CLIENT, E_SERVER, E_MODEL, IN_PROGRESS = range(6)
+    SUCCESS, E_UNKNOWN, E_CLIENT, E_SERVER, E_MODEL, IN_PROGRESS, E_CANCELLED = range(7)
 
 
 # A full error message (as returned via WAMP) has an id, corresponding textual
