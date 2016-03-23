@@ -48,7 +48,8 @@ def main():
         if isinstance(e, errors.GoSmartError):
             code = e.code
         else:
-            code = "E_UNKNOWN"
+            # If we haven't wrapped the error with GSE, there is certainly a problem in our side
+            code = "E_SERVER"
 
         with open('error_message', 'w') as f:
             f.write("%s\nINIT-ERROR (%s): %s" % (code, type(e).__name__, str(e)))
@@ -67,7 +68,8 @@ def main():
         if isinstance(e, errors.GoSmartError):
             code = e.code
         else:
-            code = "E_UNKNOWN"
+            # If we haven't wrapped the error with GSE, there is certainly a problem in our side
+            code = "E_SERVER"
 
         with open('error_message', 'w') as f:
             f.write("%s\nEXEC-ERROR (%s): %s" % (code, type(e).__name__, str(e)))
