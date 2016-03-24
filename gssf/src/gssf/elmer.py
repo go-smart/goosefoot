@@ -221,6 +221,7 @@ class GoSmartElmer(GoSmartComponent):
     probe_location_factory = None
 
     _restarting = None
+    _percentage_thread = None
 
     def __init__(self, logger, elmer_binary=None, elmer_mpi_binary=None, probe_location_factory=None):
         super().__init__(logger)
@@ -678,7 +679,8 @@ class GoSmartElmer(GoSmartComponent):
         self.stop_monitoring_status()
 
         # Wait for the percentage server to exit
-        self._percentage_thread.join()
+        if self._percentage_thread:
+            self._percentage_thread.join()
 
     # Load the configuration from the XML node
     def parse_config(self, config_node):
