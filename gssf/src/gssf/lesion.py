@@ -18,6 +18,7 @@
 import re
 import os
 import shutil
+import lxml.etree
 
 from .component import GoSmartComponent
 from .globals import EPS
@@ -150,19 +151,30 @@ class GoSmartLesion(GoSmartComponent):
         selection_method = self._find_input[self.selection]
         input_name = selection_method(input_cwd, input_prefix, criterion)
 
+        inputs = [input_name]
+        if input_name.endswith('pvtu'):
+            tree = lxml.etree.parse(os.path.join(input_cwd, input_name))
+            root = tree.getroot()
+            pieces = root.findall('.//Piece')
+            inputs += [p.get('Source') for p in pieces]
+            self.logger.print_line("Using a pvtu, found pieces: " + ", ".join(inputs))
+
         output_name = self.logger.runname + ".vtp"
         analysis_name = self.logger.runname + "-analysis.xml"
 
         # Copy the chosen file to our local working directory
         try:
-            shutil.copy(os.path.join(input_cwd, input_name), self.logger.make_cwd(self.suffix))
+            for iname in inputs:
+                shutil.copy(os.path.join(input_cwd, iname), self.logger.make_cwd(self.suffix))
         except Exception as e:
             self.logger.print_fatal("Could not copy input mesh across for lesion exciser: %s" % str(e))
 
         # Set the arguments for go-smart-lesion
+        output_vtu = "output.vtu"
         args = [
             "--input", input_name,
             "--output", output_name,
+            "--output-vtu", output_vtu,
             "--analysis", analysis_name,
             "--scale", self.scaling,
             "--field", self.field,
@@ -191,4 +203,4 @@ class GoSmartLesion(GoSmartComponent):
 
         # Return the output file that should be held for the user on the grand
         # exit
-        return os.path.join(self.cwd, output_name), os.path.join(self.cwd, input_name)
+        return os.path.join(self.cwd, output_name), os.path.join(self.cwd, output_vtu)

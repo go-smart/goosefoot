@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
        threshold_not_isovolume = false, geometry_filter = false, retain_subdomain_boundaries = false;
   int smoothing_iterations = 0, exclude_subdomain = -1;
 
-  std::string input_vtu("in.vtu"), output_vtk("out.vtk"), field("dead"), analysis_xml("analysis.xml");
+  std::string input_vtu("in.vtu"), output_vtk("out.vtk"), output_vtu("out.vtu"), field("dead"), analysis_xml("analysis.xml");
 
   tinyxml2::XMLDocument doc;
   tinyxml2::XMLElement* rootNode = doc.NewElement("gosmartAnalysis");
@@ -95,6 +95,7 @@ int main(int argc, char *argv[])
     ("input,i", po::value<std::string>(&input_vtu), "input volume mesh file")
     ("analysis,a", po::value<std::string>(&analysis_xml), "analysis output file")
     ("output,o", po::value<std::string>(&output_vtk), "output file")
+    ("output-vtu", po::value<std::string>(&output_vtu), "output VTU file (useful for combining input PVTU)")
     ("retain-subdomain-boundaries,r", po::value(&retain_subdomain_boundaries)->zero_tokens(), "retain all internal inter-zone boundary facets")
     ("geometry-filter,g", po::value(&geometry_filter)->zero_tokens(), "use geometry filter instead of vtkDataSetSurfaceFilter to extract surface");
 
@@ -139,6 +140,13 @@ int main(int argc, char *argv[])
       grid = reader->GetOutput();
   
   }
+
+  /* Make sure we have a nice clean, single-file VTK-generated VTU around */
+  vtkSmartPointer<vtkXMLUnstructuredGridWriter> vtuWriter = vtkSmartPointer<vtkXMLUnstructuredGridWriter>::New();
+  vtuWriter->SetInput(grid);
+  vtuWriter->SetFileName(output_vtu.c_str());
+  vtuWriter->Update();
+  vtuWriter->Write();
 
   std::cout << "There are " << grid->GetNumberOfCells() 
             << " cells before thresholding." << std::endl;
