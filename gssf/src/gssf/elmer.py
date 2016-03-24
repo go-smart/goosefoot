@@ -398,6 +398,19 @@ class GoSmartElmer(GoSmartComponent):
         sif_environment.globals['list'] = list
         sif_environment.globals['map'] = map
         sif_environment.globals['str'] = str
+
+        # Note that our round, as well as having an extra argument, returns an int unless base is
+        # a float (more likely to be desired in templating context than always-float)
+
+        def gssf_round(n, ndigits=None, base=False):
+            if base:
+                return base * int(n / base)
+            elif ndigits is not None:
+                return round(n, ndigits)
+            else:
+                return round(n)
+
+        sif_environment.globals['round'] = gssf_round
         sif_environment.globals['needle_distance'] = self._needle_distance
         sif_template = sif_environment.from_string(sif_definition)
 
