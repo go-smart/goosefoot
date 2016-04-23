@@ -208,7 +208,7 @@ class GoSmartMesher3DCGAL(GoSmartMesher):
     # Zone arguments are quite fiddly and, frankly, an abuse of the command
     # line. This should be transferred to PB at the earliest opportunity.
     # TODO: switch to protobuf
-    def _prep_zone_arg(self, tag, surface=False):
+    def _prep_zone_arg(self, tag, surface=False, surface_outer=False):
         if surface:
             zone_filename = str(self.logger.surfaces[tag]["filename"])
             zone_id = self.logger.surfaces[tag]["id"]
@@ -216,7 +216,7 @@ class GoSmartMesher3DCGAL(GoSmartMesher):
             self._meshed_regions[tag] = {"meshed_as": "surface"}
             self._meshed_regions[tag].update(self.logger.surfaces[tag])
 
-            if tag != 'organ':
+            if not surface_outer:
                 zone_id *= -1
         else:
             zone_filename = str(self.logger.zones[tag]["filename"])
@@ -293,7 +293,7 @@ class GoSmartMesher3DCGAL(GoSmartMesher):
             if isinstance(v, str):
                 v = (v,)
             try:
-                file_locations[k] = [self._prep_zone_arg(l, l not in self.logger.zones) for l in v]
+                file_locations[k] = [self._prep_zone_arg(l, l not in self.logger.zones, surface_outer=(k == 'organ')) for l in v]
             except KeyError as e:
                 self.logger.print_fatal("Key missing for '%s' in file locations" % e.args[0])
 
