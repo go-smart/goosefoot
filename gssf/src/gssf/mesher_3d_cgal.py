@@ -215,7 +215,9 @@ class GoSmartMesher3DCGAL(GoSmartMesher):
 
             self._meshed_regions[tag] = {"meshed_as": "surface"}
             self._meshed_regions[tag].update(self.logger.surfaces[tag])
-            zone_id *= -1
+
+            if tag != 'organ':
+                zone_id *= -1
         else:
             zone_filename = str(self.logger.zones[tag]["filename"])
             zone_id = self.logger.zones[tag]["id"]
