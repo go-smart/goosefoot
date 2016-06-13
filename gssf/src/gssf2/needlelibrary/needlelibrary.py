@@ -123,7 +123,10 @@ class NeedleLibrary:
             # TODO: should this error our if a needle cannot be output? Is there
             # a reason that it doesn't?
             if needle_manipulator is not None:
-                needle_manipulator.scale(self.scaling)
+                scaling = self.scaling
+                if "scaling" in needle:
+                    scaling *= float(needle["scaling"])
+                needle_manipulator.scale(scaling)
                 needle_manipulator.reorient(needle["axis"])
                 needle_manipulator.translate(needle_target)
                 needle_manipulator.write_stl("%s-%s" % (self.outfile, needle["file"]))
@@ -197,11 +200,13 @@ class NeedleLibrary:
                     needle_id = section.get('id')
                     stepfile = section.get('stepfile')
                     name = section.get('name')
+                    scaling = section.get('scaling')
                     if (needle_id is not None or stepfile is not None) and name is not None:
                         needle = {}
                         needle["id"] = needle_id
                         needle["stepfile"] = stepfile
                         needle["name"] = name
+                        needle["scaling"] = scaling
 
                         axis = section.get('axis')
                         needle["axis"] = list(map(float, axis.split(' ')))

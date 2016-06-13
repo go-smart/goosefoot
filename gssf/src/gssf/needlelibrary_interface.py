@@ -63,7 +63,8 @@ class GoSmartNeedleLibraryInterface(GoSmartComponent):
 
             # Make sure the needlelibrary command receives the overall scaling
             if 'simulationscaling' in self.logger.geometry:
-                self.config.set("scaling", str(self.logger.geometry["simulationscaling"]))
+                scaling = self.logger.geometry["simulationscaling"]
+                self.config.set("scaling", str(scaling))
 
             # Transfer the version of GSSF-XML to needlelibrary's XML (they
             # should be in lock-step)
@@ -89,6 +90,9 @@ class GoSmartNeedleLibraryInterface(GoSmartComponent):
                         needle.set('stepfile', stepfile)
                     else:
                         needle.set('id', needle_id)
+
+                    if section.get('scaling'):
+                        needle.set('scaling', str(section.get('scaling')))
 
                     # This allows a consistent name to be used for identifying
                     # this needle throughout the simulation
