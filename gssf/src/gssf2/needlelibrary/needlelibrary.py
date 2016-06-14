@@ -124,8 +124,10 @@ class NeedleLibrary:
             # a reason that it doesn't?
             if needle_manipulator is not None:
                 scaling = self.scaling
+                self.logger.print_line("Simulation Scaling: %lf" % scaling)
                 if "scaling" in needle:
                     scaling *= float(needle["scaling"])
+                    self.logger.print_line("Total Scaling: %lf" % scaling)
                 needle_manipulator.scale(scaling)
                 needle_manipulator.reorient(needle["axis"])
                 needle_manipulator.translate(needle_target)
