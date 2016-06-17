@@ -17,3 +17,23 @@ https://www.gnu.org/copyleft/gpl.html
 
 Code or software in the third-party/ subdirectory is exempt from the above and any patches containing
 original work by NUMA should be considered to be under the same license as the original code.
+
+CLARIFICATIONS
+--------------
+
+The following are not considered "combined works" with regard to the terms of the AGPL of relevant Glossia components:
+
+     - user model code injected into a container, such as that uploaded to a container through a Glossia client,
+     - new container images created for use with Glossia, allowing containerization of closed source numerical packages, for instance, (unless AGPL Go-Smart tools have been added to the container [1])
+     - services operating at arms length, beyond the core functioning of Glossia, including, but not limited to, third-party front-ends, external databases, WAMP routers, clients, file servers, webservers and schedulers.
+
+However, the following are considered to fall with the definition of a "combined work" and the relevant provisions of the AGPL will apply (this list is not to intended to be exhaustive):
+     - changes to files marked with an AGPL license, or to files with no marked license within a Go-Smart repository containing an AGPL license, unless clearly indicated otherwise,
+     - software that could not perform its intended task with respect to Glossia outside the container of a containerized AGPL component, such as the Glossia server, (including direct extensions to the code-base of an AGPL component).
+
+
+Submission of code, or other intellectual property, to be considered for inclusion in any Go-Smart project repository grants, to the members of the Go-Smart Consortium, a non-exclusive, perpetual, irrevocable, royalty-free, fully paid-up, worldwide license to material submitted for inclusion [2]. Moreover, submission of such material to a repository containing this file indicates acceptance that a license to the material is thereby provided to all potential users under each license already contained in the repository, unless one or more of those licenses already within the repository are specifically identified within the submission [3]. Submission of such material is also acknowledgement that you are, or are entitled to enter into this agreement on behalf of, the intellectual property owner of the submitted material.
+
+1 - libraries intended for use within a simulation container are generally licensed under more permissive licenses for this reason.
+2 - note that this permits the Go-Smart Consortium members to additionally relicense submitted code under terms other than the repository license, including commercial licenses.
+3 - all submitted code may be used under any license within a repository, unless you explicitly select one or more from those in the repository. Note that if you submit code for consideration for inclusion in a repository and specify a license not already contained in the repository, but none contained in the repository, a user may use the code under any license already contained within the repository. In general, it is recommended that each submitted file be marked with the license most widely used in the repository to which it is submitted.
