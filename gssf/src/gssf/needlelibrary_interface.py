@@ -80,11 +80,14 @@ class GoSmartNeedleLibraryInterface(GoSmartComponent):
                     needle_id = section.get('id')
                     # ... or a CAD definition?
                     stepfile = self.logger.get_file('cad', needle_id)
+                    definition_file = section.get('input')
 
                     # This is the preferred way to identify a library needle,
                     # although we would really rather move the whole needle
-                    # definition to GSSA
-                    if needle_id.startswith('stock:'):
+                    # definition to GSSA (TODO: update comment to reflect switch)
+                    if definition_file:
+                        needle.set('stepfile', definition_file)
+                    elif definition_file and needle_id.startswith('stock:'):
                         needle.set('id', needle_id[len('stock:'):])
                     elif stepfile is not None:
                         needle.set('stepfile', stepfile)
