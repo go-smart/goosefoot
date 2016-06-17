@@ -22,6 +22,7 @@
 import os
 import sys
 import argparse
+import tarfile
 
 from . import manipulator
 from . import spherebuilder
@@ -118,16 +119,22 @@ class NeedleLibrary:
                 needle_manipulator = manipulator.Manipulator(self.logger, needle_id=needle["id"])
             elif needle["stepfile"] is not None:
                 self.logger.print_line("Using needle: %s (axis: %s; target: %s)" % (needle["stepfile"], str(needle["axis"]), str(needle_target)))
-                needle_manipulator = manipulator.Manipulator(self.logger, filename=needle["stepfile"])
+                if needle["stepfile"].endswith('.tar.gz'):
+                    tf = tarfile.open(needle["stepfile"])
+                    tf.extractall('.')
+                    needle_stepfile = 'needle0.step'
+                else:
+                    needle_stepfile = needle["stepfile"]
+                needle_manipulator = manipulator.Manipulator(self.logger, filename=needle_stepfile)
 
             # TODO: should this error our if a needle cannot be output? Is there
             # a reason that it doesn't?
             if needle_manipulator is not None:
                 scaling = self.scaling
                 self.logger.print_line("Simulation Scaling: %lf" % scaling)
-                if "scaling" in needle:
+                if needle["scaling"]:
+                    self.logger.print_line("Total Scaling: %lf" % needle["scaling"])
                     scaling *= float(needle["scaling"])
-                    self.logger.print_line("Total Scaling: %lf" % scaling)
                 needle_manipulator.scale(scaling)
                 needle_manipulator.reorient(needle["axis"])
                 needle_manipulator.translate(needle_target)

@@ -86,7 +86,7 @@ class GoSmartNeedleLibraryInterface(GoSmartComponent):
                     # although we would really rather move the whole needle
                     # definition to GSSA (TODO: update comment to reflect switch)
                     if definition_file:
-                        needle.set('stepfile', definition_file)
+                        needle.set('stepfile', os.path.join('..', 'input', definition_file))
                     elif definition_file and needle_id.startswith('stock:'):
                         needle.set('id', needle_id[len('stock:'):])
                     elif stepfile is not None:
