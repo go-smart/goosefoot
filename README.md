@@ -27,7 +27,7 @@ Dependencies
 Documentation
 -------------
 
-Documentation for this component is available at https://go-smart.github.io/gssf
+Documentation for this component is available at https://go-smart.github.io/goosefoot
 
 Installation
 ------------
